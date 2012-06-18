@@ -2,9 +2,12 @@
 <reactivision>
 
 <!--
-these are all the possible configuration tags and their default values
-you only need to specify parameters that you want to change from their default
-please note that the active tags need to be outside of this commented area.
+these are all the possible configuration tags
+and their default values
+you only need to specify parameters that you want
+to change from their default
+please not that you need to move these tags out of
+the commented area if you want to use them.
 
 <tuio host="127.0.0.1" port="3333" />
 <midi config="midi_demo.xml" />

@@ -59,7 +59,7 @@ bool FolderCamera::initCamera() {
 	HANDLE list = FindFirstFile(buf, &results);
 	while (FindNextFile(list, &results)) {
 		if (strstr(results.cFileName,".pgm")!=NULL) {
-			sprintf(file_name,"%s\%s",config.folder,results.cFileName);
+			sprintf(file_name,"%s\\%s",config.folder,results.cFileName);
 			image_list.push_back(file_name);
 		}
 		
@@ -80,29 +80,29 @@ bool FolderCamera::initCamera() {
 	} else return false;
 #endif
 
- 	FILE*  imagefile=fopen(image_list.begin()->c_str(),"r");
+ 	FILE*  imagefile=fopen(image_list.begin()->c_str(),"rb");
 	if (imagefile==NULL) return false;
 		
-	fgets(header,32,imagefile);
-	while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+	char *result = fgets(header,32,imagefile);
+	while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 	if (strstr(header,"P5")==NULL) return false;
 		
-	fgets(header,32,imagefile);
-	while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+	result = fgets(header,32,imagefile);
+	while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 	param = strtok(header," "); if (param) width = atoi(param);
 	param = strtok(NULL," "); if (param) height =  atoi(param);
 	param = strtok(NULL," "); if (param) gray = atoi(param);
 
 	if (height==0) 	{ 
-		fgets(header,32,imagefile);
-		while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+		result = fgets(header,32,imagefile);
+		while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 		param = strtok(header," "); if (param) height = atoi(param);
 		param = strtok(NULL," "); if (param) gray = atoi(param);
 	}
 
 	if (gray==0) {
-		fgets(header,32,imagefile);
-		while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+		result = fgets(header,32,imagefile);
+		while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 		param = strtok(header," "); if (param) gray = atoi(param);
 	}
 
@@ -130,31 +130,32 @@ unsigned char* FolderCamera::getFrame()
  	FILE*  imagefile=fopen(image_iterator->c_str(),"r");
 	if (imagefile==NULL) return NULL;
 		
-	fgets(header,32,imagefile);
-	while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+	char *result = fgets(header,32,imagefile);
+	while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 	if (strstr(header,"P5")==NULL) return NULL;
 		
-	fgets(header,32,imagefile);
-	while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+	result = fgets(header,32,imagefile);
+	while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 	param = strtok(header," "); if (param) width = atoi(param);
 	param = strtok(NULL," "); if (param) height =  atoi(param);
 	param = strtok(NULL," "); if (param) gray = atoi(param);
 
 	if (height==0) 	{ 
-		fgets(header,32,imagefile);
-		while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+		result = fgets(header,32,imagefile);
+		while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 		param = strtok(header," "); if (param) height = atoi(param);
 		param = strtok(NULL," "); if (param) gray = atoi(param);
 	}
 
 	if (gray==0) {
-		fgets(header,32,imagefile);
-		while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+		result = fgets(header,32,imagefile);
+		while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 		param = strtok(header," "); if (param) gray = atoi(param);
 	}
 
 	if ((width!=config.width) || (height!=config.height) ) return NULL; 
-	fread(buffer, bytes,  width*height, imagefile);
+	size_t size = fread(buffer, bytes,  width*height, imagefile);
+	if ((int)size!=width*height*bytes) std::cerr << "wrong image lenght" << std::endl;
 	fclose(imagefile);
 
 	image_iterator++;

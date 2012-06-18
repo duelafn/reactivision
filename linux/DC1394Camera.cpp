@@ -88,7 +88,7 @@ bool DC1394Camera::initCamera() {
 	int height_table[] = {120,240,480,480,480,480,480,600,600,600,768,768,768,600,768,1024,1024,1024,1200,1200,1200,1024,1200 };
 
 	
-	if ((camera->bmode_capable==DC1394_TRUE) && (std::string(camera->model)!="Firefly MV FFMV-03MTM")) {
+	if ((camera->bmode_capable==DC1394_TRUE) && (std::string(camera->model).find("Firefly MV FFMV")!=std::string::npos)) {
 		// set operation mode legacy or 1394B
 		dc1394_video_set_operation_mode(camera, operation_mode);
 		dc1394_video_get_operation_mode(camera, &operation_mode);

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 51448)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  version="1.0" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="1364.63" height="1364.63" viewBox="0 0 1364.63 1364.63"
+	 overflow="visible" enable-background="new 0 0 1364.63 1364.63" xml:space="preserve">
+<g id="Background">
+</g>
+<g id="Guides">
+</g>
+<g id="Foreground">
+	<g>
+		<path fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" d="M2,682.315C2,306.583,306.583,2,682.315,2
+			s680.315,304.583,680.315,680.315s-304.583,680.315-680.315,680.315S2,1058.047,2,682.315z"/>
+		<path fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" d="M682.315,682.315"/>
+	</g>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="2" y1="682.315" x2="1362.63" y2="682.315"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="2" y1="455.543" x2="1362.63" y2="455.543"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="2" y1="228.771" x2="1362.63" y2="228.771"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="2" y1="1135.858" x2="1362.63" y2="1135.858"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="2" y1="909.086" x2="1362.63" y2="909.086"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="909.086" y1="2" x2="909.086" y2="1362.63"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="228.772" y1="2" x2="228.772" y2="1362.63"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="455.543" y1="2" x2="455.543" y2="1362.63"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="682.315" y1="2" x2="682.315" y2="1362.63"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="1135.858" y1="2" x2="1135.858" y2="1362.63"/>
+	<g>
+		<path fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" d="M228.772,682.315
+			c0-250.488,203.055-453.543,453.543-453.543s453.543,203.055,453.543,453.543s-203.055,453.543-453.543,453.543
+			S228.772,932.803,228.772,682.315z"/>
+		<path fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" d="M682.315,682.315"/>
+	</g>
+	<g>
+		<circle fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" cx="682.315" cy="682.315" r="226.772"/>
+		<path fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" d="M682.315,682.315"/>
+	</g>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="2" y1="2" x2="1362.63" y2="2"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="2" y1="1362.63" x2="1362.63" y2="1362.63"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="2" y1="2" x2="2" y2="1362.63"/>
+	
+		<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="3.8637" x1="1362.63" y1="2" x2="1362.63" y2="1362.63"/>
+</g>
+</svg>

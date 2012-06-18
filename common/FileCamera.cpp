@@ -41,7 +41,7 @@ FileCamera::~FileCamera()
 bool FileCamera::findCamera() {
 	readSettings();
 	if (config.file==NULL) return false;
-	FILE* imagefile=fopen(config.file, "r");
+	FILE* imagefile=fopen(config.file, "rb");
 	if (imagefile==NULL) return false;
 	fclose(imagefile);
 	return true;
@@ -57,33 +57,34 @@ bool FileCamera::initCamera() {
 	FILE*  imagefile=fopen(config.file, "r");
 	if (imagefile==NULL) return false;
 
- 	fgets(header,32,imagefile);
-	while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+ 	char *result = fgets(header,32,imagefile);
+	while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 	if (strstr(header,"P5")==NULL) return false;
 		
-	fgets(header,32,imagefile);
-	while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+	result = fgets(header,32,imagefile);
+	while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 	param = strtok(header," "); if (param) width = atoi(param);
 	param = strtok(NULL," "); if (param) height =  atoi(param);
 	param = strtok(NULL," "); if (param) gray = atoi(param);
 
 	if (height==0) 	{ 
-		fgets(header,32,imagefile);
-		while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+		result = fgets(header,32,imagefile);
+		while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 		param = strtok(header," "); if (param) height = atoi(param);
 		param = strtok(NULL," "); if (param) gray = atoi(param);
 	}
 
 	if (gray==0) {
-		fgets(header,32,imagefile);
-		while (strstr(header,"#")!=NULL) fgets(header,32,imagefile);
+		result = fgets(header,32,imagefile);
+		while (strstr(header,"#")!=NULL) result = fgets(header,32,imagefile);
 		param = strtok(header," "); if (param) gray = atoi(param);
 	}
 
 	if ((width==0) || (height==0) ) return false; 
 
 	buffer = new unsigned char[width*height*bytes];		
-	fread(buffer, bytes,  width*height, imagefile);
+	size_t size = fread(buffer, bytes,  width*height, imagefile);
+	if ((int)size!=width*height*bytes) std::cerr << "wrong image lenght" << std::endl;
 	fclose(imagefile);
 
 	config.width = width;

@@ -56,16 +56,17 @@ void PortVideoSDL::saveBuffer(unsigned char* buffer) {
 
 	int zerosize = 16-(int)floor(log10((float)framenumber_));
 	if (zerosize<0) zerosize = 0;
-	char zero[zerosize+1];
+	char zero[255];
 	zero[zerosize]=0;
 	for (int i=0;i<(zerosize);i++) zero[i]=48;
 
 	char fileName[256];
 #ifdef WIN32
-	sprintf(fileName,".\recording\%s%ld.pgm",zero,framenumber_);
+	sprintf(fileName,".\\recording\\%s%ld.pgm",zero,framenumber_);
 #else
 	sprintf(fileName,"./recording/%s%ld.pgm",zero,framenumber_);
 #endif
+	std::cout << fileName << std::endl;
 	FILE*  imagefile=fopen(fileName, "w");
 	fprintf(imagefile,"P5\n%u %u 255\n", width_, height_);
 	fwrite((const char *)buffer, 1,  width_*height_, imagefile);
@@ -366,8 +367,8 @@ void PortVideoSDL::process_events()
 					} else {
 						struct stat info;
 #ifdef WIN32			
-						if (stat(".\recording",&info)!=0) {
-							std::string dir(".\recording");
+						if (stat(".\\recording",&info)!=0) {
+							std::string dir(".\\recording");
 							LPSECURITY_ATTRIBUTES attr = NULL;
 							CreateDirectory(dir.c_str(),attr);
 						}
@@ -381,8 +382,8 @@ void PortVideoSDL::process_events()
 			} else if( event.key.keysym.sym == SDLK_b ){
 				struct stat info;
 #ifdef WIN32			
-				if (stat(".\recording",&info)!=0) {
-					std::string dir(".\recording");
+				if (stat(".\\recording",&info)!=0) {
+					std::string dir(".\\recording");
 					LPSECURITY_ATTRIBUTES attr = NULL;
 					CreateDirectory(dir.c_str(),attr);
 				}
