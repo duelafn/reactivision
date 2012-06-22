@@ -15,6 +15,10 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+
+    V4L2 API Reference:
+      http://www.kernel.org/doc/htmldocs/media/user-func.html
 */
 
 #include "V4Linux2Camera.h"
@@ -99,6 +103,28 @@ bool V4Linux2Camera::initCamera() {
     width = v4l2_form.fmt.pix.width;
     height = v4l2_form.fmt.pix.height;
     fps = 0;      
+
+
+    // Set the Frame Rate  (frame interval)
+    v4l2_parm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    if (ioctl(cameraID, VIDIOC_G_PARM, &v4l2_parm) < 0) {
+        printf("Unable to get V4L2 streaming parameters: %s\n" , strerror(errno));
+        return false;
+    }
+
+    if (v4l2_parm.parm.capture.capability & V4L2_CAP_TIMEPERFRAME) {
+        printf("DEBUG: Setting FPS\n");
+        v4l2_parm.parm.capture.timeperframe.numerator = 1;
+        v4l2_parm.parm.capture.timeperframe.denominator = int( config.fps );
+
+        if (ioctl(cameraID, VIDIOC_S_PARM, &v4l2_parm) < 0)
+            printf("ERROR: Unable to SET V4L2 streaming parameters: %s\n" , strerror(errno));
+        if (ioctl(cameraID, VIDIOC_G_PARM, &v4l2_parm) < 0)
+            printf("ERROR: Unable to RE-get V4L2 streaming parameters: %s\n" , strerror(errno));
+
+        fps = float(v4l2_parm.parm.capture.timeperframe.denominator);
+    }
+
 
 	if ((v4l2_form.fmt.pix.pixelformat != V4L2_PIX_FMT_YUYV) && (v4l2_form.fmt.pix.pixelformat != V4L2_PIX_FMT_UYVY) && (v4l2_form.fmt.pix.pixelformat != V4L2_PIX_FMT_YUV420)) {
 		printf("unsupported pixelformat: ");
