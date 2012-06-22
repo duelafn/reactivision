@@ -81,6 +81,7 @@
 		const char *settingText = NULL;
 		switch (currentCameraSetting) {
 			case BRIGHTNESS:	settingText = "Brightness"; break;
+			case CONTRAST:	settingText = "Contrast"; break;
 			case GAIN:		settingText = "Gain"; break;
 			case SHUTTER:		settingText = "Shutter"; break;
 			case EXPOSURE:		settingText = "Exposure"; break;
@@ -135,6 +136,7 @@
 		sprintf(config.file,"none");		
 		sprintf(config.folder,"none");		
 		config.brightness = SETTING_DEFAULT;
+		config.contrast = SETTING_DEFAULT;
 		config.gain = SETTING_DEFAULT;
 		config.gamma = SETTING_DEFAULT;
 		config.exposure = SETTING_DEFAULT;
@@ -251,6 +253,13 @@
 				else if (strcmp(settings_element->Attribute("brightness"), "default" ) == 0) config.brightness=SETTING_DEFAULT;
 				else config.brightness = atoi(settings_element->Attribute("brightness"));
 			}
+			if(settings_element->Attribute("contrast")!=NULL) {
+				if (strcmp(settings_element->Attribute("contrast"), "max" ) == 0) config.contrast=SETTING_MAX;
+				else if (strcmp(settings_element->Attribute("contrast"), "min" ) == 0) config.contrast=SETTING_MIN;
+				else if (strcmp(settings_element->Attribute("contrast"), "auto" ) == 0) config.contrast=SETTING_AUTO;
+				else if (strcmp(settings_element->Attribute("contrast"), "default" ) == 0) config.contrast=SETTING_DEFAULT;
+				else config.contrast = atoi(settings_element->Attribute("contrast"));
+			}
 			if(settings_element->Attribute("gain")!=NULL) {
 				if (strcmp(settings_element->Attribute("gain"), "max" ) == 0) config.gain=SETTING_MAX;
 				else if (strcmp(settings_element->Attribute("gain"), "min" ) == 0) config.gain=SETTING_MIN;
@@ -344,6 +353,17 @@ void CameraEngine::saveSettings() {
 			else {
 				sprintf(config_value,"%d",config.brightness);
 				settings_element->SetAttribute("brightness",config_value);
+			}
+		}
+		if(settings_element->Attribute("contrast")!=NULL) {
+
+			if (config.contrast==SETTING_MAX) settings_element->SetAttribute("contrast","max");
+			else if (config.contrast==SETTING_MIN) settings_element->SetAttribute("contrast","min");
+			else if (config.contrast==SETTING_AUTO) settings_element->SetAttribute("contrast","auto");
+			else if (config.contrast==SETTING_DEFAULT) settings_element->SetAttribute("contrast","default");
+			else {
+				sprintf(config_value,"%d",config.contrast);
+				settings_element->SetAttribute("contrast",config_value);
 			}
 		}
 		if(settings_element->Attribute("gain")!=NULL) {
@@ -493,6 +513,7 @@ void CameraEngine::applyCameraSetting(int mode, int value) {
 void CameraEngine::applyCameraSettings() {
 
 	applyCameraSetting(BRIGHTNESS,config.brightness);
+	applyCameraSetting(CONTRAST,config.contrast);
 	applyCameraSetting(GAIN,config.gain);
 	applyCameraSetting(SHUTTER,config.shutter);
 	applyCameraSetting(EXPOSURE,config.exposure);

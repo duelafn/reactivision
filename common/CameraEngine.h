@@ -56,7 +56,7 @@ public:
 	virtual bool closeCamera() = 0;	
 	virtual bool stillRunning() = 0;
 
-	enum CameraSetting { BRIGHTNESS, GAIN, SHUTTER, EXPOSURE, SHARPNESS, FOCUS, GAMMA };	
+	enum CameraSetting { BRIGHTNESS, CONTRAST, GAIN, SHUTTER, EXPOSURE, SHARPNESS, FOCUS, GAMMA };
 
 	virtual int getCameraSettingStep(int mode) = 0;
 	virtual int getMinCameraSetting(int mode) = 0;
@@ -95,6 +95,7 @@ protected:
 			int xoff;
 			int yoff;
 			int brightness;
+			int contrast;
 			int gain;
 			int shutter;
 			int exposure;

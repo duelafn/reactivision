@@ -331,6 +331,7 @@ bool V4Linux2Camera::setCameraSetting(int mode, int setting) {
 
 	switch (mode) {
 		case BRIGHTNESS: v4l2_ctrl.id = V4L2_CID_BRIGHTNESS; config.brightness = setting; break;
+		case CONTRAST: v4l2_ctrl.id = V4L2_CID_CONTRAST; config.contrast = setting; break;
 		case GAIN: v4l2_ctrl.id = V4L2_CID_GAIN; config.gain = setting; break;
 		case EXPOSURE: v4l2_ctrl.id = V4L2_CID_EXPOSURE; config.exposure = setting; break;
 #ifdef V4L2_CID_SHARPNESS
@@ -353,6 +354,7 @@ int V4Linux2Camera::getCameraSetting(int mode) {
 
 	switch (mode) {
 		case BRIGHTNESS: v4l2_ctrl.id = V4L2_CID_BRIGHTNESS; break;
+		case CONTRAST: v4l2_ctrl.id = V4L2_CID_CONTRAST; break;
 		case GAIN: v4l2_ctrl.id = V4L2_CID_GAIN; break;
 		case EXPOSURE: v4l2_ctrl.id = V4L2_CID_EXPOSURE; break;
 #ifdef V4L2_CID_SHARPNESS
@@ -372,6 +374,7 @@ int V4Linux2Camera::getMaxCameraSetting(int mode) {
 
 	switch (mode) {
 		case BRIGHTNESS: v4l2_query.id = V4L2_CID_BRIGHTNESS; break;
+		case CONTRAST: v4l2_query.id = V4L2_CID_CONTRAST; break;
 		case GAIN: v4l2_query.id = V4L2_CID_GAIN; break;
 		case EXPOSURE: v4l2_query.id = V4L2_CID_EXPOSURE; break;
 #ifdef V4L2_CID_SHARPNESS
@@ -398,6 +401,7 @@ int V4Linux2Camera::getMinCameraSetting(int mode) {
 
 	switch (mode) {
 		case BRIGHTNESS: v4l2_query.id = V4L2_CID_BRIGHTNESS; break;
+		case CONTRAST: v4l2_query.id = V4L2_CID_CONTRAST; break;
 		case GAIN: v4l2_query.id = V4L2_CID_GAIN; break;
 		case EXPOSURE: v4l2_query.id = V4L2_CID_EXPOSURE; break;
 #ifdef V4L2_CID_SHARPNESS
@@ -424,6 +428,7 @@ int V4Linux2Camera::getCameraSettingStep(int mode) {
 
 	switch (mode) {
 		case BRIGHTNESS: v4l2_query.id = V4L2_CID_BRIGHTNESS; break;
+		case CONTRAST: v4l2_query.id = V4L2_CID_CONTRAST; break;
 		case GAIN: v4l2_query.id = V4L2_CID_GAIN; break;
 		case EXPOSURE: v4l2_query.id = V4L2_CID_EXPOSURE; break;
 #ifdef V4L2_CID_SHARPNESS
