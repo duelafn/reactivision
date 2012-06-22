@@ -23,14 +23,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <linux/videodev.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <errno.h>
 #include <sys/ioctl.h>
 #include <sys/mman.h>
 #include <linux/types.h>
-#include <linux/videodev.h>
+#include <libv4l1-videodev.h>
 
 class V4LinuxCamera : public CameraEngine
 {
