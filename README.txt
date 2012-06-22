@@ -1,5 +1,25 @@
-reacTIVision 1.4
-----------------
+reacTIVision - UNOFFICIAL FORK
+------------------------------
+
+This repository is an unofficial fork of the reacTIVision computer vision
+framework. It focuses on bugfixes. modernization, and limited feature
+expansion in the Linux code (I have no access to other operating systems).
+
+Changes from upstream:
+
+ * Modify to compile on newer (≥ 2.6.38) kernels
+ * Add a "Contrast" camera setting
+ * Set FPS in Linux
+
+Changes (c) 2012 Dean Serenevy <dean@serenevy.net> and release under same
+terms as original sources (GPL-2+).
+
+https://github.com/duelafn/reactivision
+
+
+reacTIVision
+------------
+
 (c) 2005-2009 by Martin Kaltenbrunner <mkalten@iua.upf.edu>
 http://reactivision.sourceforge.net/
 
