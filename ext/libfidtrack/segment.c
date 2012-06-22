@@ -56,7 +56,6 @@ static RegionReference* new_region( Segmenter *s, int x, int y, int colour )
 {
     RegionReference *result;
     Region *r;
-	int i;
 
     if( s->freed_regions_head ){
         r = s->freed_regions_head;
@@ -84,8 +83,8 @@ static RegionReference* new_region( Segmenter *s, int x, int y, int colour )
     r->descendent_count = 0x7FFF;
 
     r->adjacent_region_count = 0;	
-	i = y*(s->width)+x;
 /*	
+	int i = y*(s->width)+x;
 	r->first_span = LOOKUP_SEGMENTER_SPAN( s,  i );
 	r->first_span->start = i;
 	r->first_span->end = i;

@@ -58,7 +58,7 @@ bool V4LinuxCamera::initCamera() {
 	v4l_win.width  = width;
 	v4l_win.height = height;
 	v4l_win.clipcount = 0;
-	v4l_win.flags  = v4l_win.flags |= ( (int)fps << 16 );
+	v4l_win.flags |= ( (int)fps << 16 );
 	
 	if (ioctl(cameraID, VIDIOCSWIN, &v4l_win) < 0) {
 		printf("Cannot set window settings: %s\n", strerror(errno));
